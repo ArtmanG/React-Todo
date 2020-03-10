@@ -15,7 +15,6 @@ constructor() {
     todo,
     name: ''
   };
-  this.addTask = this.addTask.bind(this);
 };
 
 toggleCompleted = clickedTaskId => {
@@ -44,6 +43,13 @@ addTask = taskName => {
   });
 };
 
+deleteCompleted = () => {
+  this.setState({
+    todo: this.state.todo.filter((task) => !task.completed),
+  })
+}
+
+
   render() {
     return (
       <div className='App'>
@@ -54,6 +60,7 @@ addTask = taskName => {
         <ToDoList 
         todo={this.state.todo}
         toggleCompleted={this.toggleCompleted}
+        deleteCompleted={this.deleteCompleted}
         />
         <TodoForm addTask={this.addTask} />
       </div>
